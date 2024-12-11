@@ -1,3 +1,4 @@
+telran\net\ServerLauncher.class
 telran\net\TcpConfigurationProperties.class
 telran\net\Response.class
 telran\net\NetworkClient.class
@@ -5,6 +6,7 @@ telran\net\TcpClientServerSession.class
 telran\net\Protocol.class
 telran\net\ResponseCode.class
 telran\net\TcpClient.class
+telran\net\MyProtocol.class
 telran\net\Request.class
 telran\net\exceptions\ServerUnavailableException.class
 telran\net\TcpServer.class

@@ -3,8 +3,11 @@ package telran.net;
 import java.io.*;
 import java.net.*;
 import java.time.Instant;
+
 import org.json.JSONObject;
+
 import telran.net.exceptions.ServerUnavailableException;
+
 import static telran.net.TcpConfigurationProperties.*;
 
 public class TcpClient implements Closeable, NetworkClient {
@@ -67,10 +70,15 @@ public class TcpClient implements Closeable, NetworkClient {
 
         try {
             if (socket == null) {
+
                 throw new ServerUnavailableException(host, port);
             }
             writer.println(request);
             String responseJSON = reader.readLine();
+            if (responseJSON == null) {
+              
+                throw new ServerUnavailableException(host, port);
+            }
             JSONObject jsonObj = new JSONObject(responseJSON);
             ResponseCode responseCode = jsonObj.getEnum(ResponseCode.class, RESPONSE_CODE_FIELD);
             String responseData = jsonObj.getString(RESPONSE_DATA_FIELD);
